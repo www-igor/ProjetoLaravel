@@ -14,7 +14,7 @@
    <body>
     <h1>Login adm</h1>
 
-<form action="{{ route('teste.login') }}" method="POST">
+<form action="{{ route('loginAdm.login') }}" method="POST">
     @csrf
     <label for="email">Email:</label><br>
     <input type="text" id="email" name="email"><br>

@@ -2,10 +2,23 @@
 
 namespace App\services\Login;
 
+use App\Exceptions\LoginAdm\ExceptionLoginAdmError;
+use App\Repositories\LoginAdm\LoginAdmRepository;
+
 class LoginService 
 {
-    public function login(): void
+
+    public function __construct(public LoginAdmRepository $repository)
+    {}
+
+    public function loginAdm(array $userAdm): bool
     {
-        dd("olá estou aqui");
+       $userAdmExists =  $this->repository->userAdmExists($userAdm);
+
+       if (!$userAdmExists) {
+            throw new ExceptionLoginAdmError();
+       }
+
+        return $userAdmExists;
     }
 }

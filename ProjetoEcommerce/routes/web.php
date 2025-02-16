@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginAdmController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,8 +9,8 @@ Route::get('/', function () {
 
 
 Route::group([
-    'prefix' => 'login',
-    'as' => 'teste.'
+    'prefix' => 'loginAdm',
+    'as' => 'loginAdm.'
     ], function () {
-        Route::post('/', LoginController::class)->name('login');
+        Route::post('/', LoginAdmController::class)->name('login');
 });

@@ -7,16 +7,19 @@ use Throwable;
 use App\Http\Requests\LoginRequest;
 use App\services\Login\LoginService;
 use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
-class LoginController extends Controller{
+class LoginAdmController extends Controller{
 
     public function __invoke(LoginRequest $request, LoginService $service): JsonResponse
-    {
+    {   
         try{
-            $service->login($request->all());
+            $service->loginAdm($request->all());
             
             return $this->responseSuccess(
-                ['entrou no adm'], 200
+                [
+                    __('userAdm.login.success')
+                ], Response::HTTP_OK
             );
 
         } catch(Throwable $e) {
